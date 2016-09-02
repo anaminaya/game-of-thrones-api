@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get '/games' => 'games#index'
       get '/games/:id' => 'games#show'
+      post '/games' => 'games#create'
     end
 
 
@@ -11,5 +12,7 @@ Rails.application.routes.draw do
       get '/games/:id' => 'games#show'
     end
   end
+
+  get '/games' => 'games#index'
 
 end
