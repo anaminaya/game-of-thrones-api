@@ -1,5 +1,6 @@
 <div ng-app="app">
   <div ng-controller="gamesCtrl">
+    <h2>{{message}}</h2>
     <h2> Create a new character</h2>
     <br>
     <input type="text" placeholder="Name" ng-model="character.character">
@@ -7,25 +8,38 @@
     <input type="text" placeholder="House" ng-model="character.house">
     <button type="button" ng-click="addCharacter(character)">Add Character</button>
 
-      <h2>{{message}}</h2>
-
       <ul>
         <li ng-repeat="error in errors"></li>
       </ul>
+
+      <datalist id="characters">
+        <option ng-repeat="character in games">{{character.character}}</option>
+      </datalist>
+
+      <input type="text" ng-model="filterCharacter" list="characters">
+
       <input type="text" placeholder="Filter by house" ng-model="filterHouse">
       <button type="button" ng-click="toggleOrder('character')"> Order by Character</button>
       <button type="button" ng-click="toggleOrder('house')"> Order by House</button>
 
-      <div ng-repeat="character in games | filter: {house: filterHouse} | orderBy: orderAttribute:isReverse">
-      <ul>
-          <li>Character: {{ character.character}}</li>
-          <li>House: {{ character.house }}</li>
-          <li>City: {{character.city}}</li>
+      <table id="TBGOT" style="width:100%">
+        <tr>
+          <th ng-click="toggleOrder('character')">
+            Character
+          </th>
 
-    
-        <button type="button" ng-click="deleteCharacter(character)">Delete</button>
-      </div>
+          <th>House</th>
+          <th>City</th>
+        </tr>
 
+      <tr ng-repeat="character in games | filter: {house: filterHouse} | orderBy: orderAttribute:isReverse">
+
+          <td>{{ character.character}}</td>
+          <td>{{ character.house }}</td>
+          <td>{{character.city}}</td>
+      </tr>
+      </table>
+      <!-- <button type="button" ng-click="deleteCharacter(character)">Delete</button>   -->
       <h3>{{ character.length }}</h3>
     </div>
 </div>

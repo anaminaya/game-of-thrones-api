@@ -10,6 +10,35 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require animate
  *= require_tree .
  *= require_self
  */
+ table#TBGOT {
+    width: 100%;
+    background-color: #f1f1c1;
+}
+
+table#TBGOT tr:nth-child(even) {
+    background-color: #eee;
+}
+table#TBGOT tr:nth-child(odd) {
+    background-color: #fff;
+}
+table#TBGOT th {
+    color: white;
+    background-color: black;
+}
+.ng-enter, .ng-move{
+  -webkit-animation: shake 1s;
+  -moz-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+.ng-leave{
+  -webkit-animation: fadeOut 1s;
+  -moz-animation: fadeOut 1s;
+  -o-animation: fadeOut 1s;
+  animation: fadeOut 1s;
+}
